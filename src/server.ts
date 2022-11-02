@@ -1,8 +1,5 @@
-import express from 'express';
-const app = express();
+import setupApplication from './config';
 
-app.get('/', (req, res)=>{
-  res.send("<h1>SE FODER PORRA</h1>")
-})
+const app = setupApplication();
 
-app.listen(3000, ()=>console.log('Rodando na caceta 3000'));
+app.start();
