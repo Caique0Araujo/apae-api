@@ -1,0 +1,49 @@
+create é POST
+all é GET
+id é GET e o id no lugar do id
+create precisa de body JSON com as infos;
+
+// Products
+
+http://localhost:3333/products/create
+http://localhost:3333/products/all
+http://localhost:3333/products/id
+
+{
+	"name": "vaso",
+	"description": "vaso artesanal",
+	"price": 20.99,
+	"image_path": "localhost//images//bazar//vaso2.png"
+}
+
+
+// News 
+
+http://localhost:3333/news/create
+http://localhost:3333/news/all
+
+{
+	"title":"Noticia 1",
+	"text":"texto da noticia, onde vai todo o conteúdo da noticia",
+	"image_path": "localhost//assets/img/news1.jpeg"
+}
+
+// Bazaar info
+
+http://localhost:3333/bazaar_info/create
+http://localhost:3333/bazaar_info/all
+
+{
+	"title": "info1",
+	"description": "descrição da informação, pode ser qualquer coisa dependendo do titulo"
+}
+
+// Donations
+
+http://localhost:3333/donations/create
+http://localhost:3333/donations/all
+
+{
+	"title": "info1",
+	"description": "descrição da informação, pode ser qualquer coisa dependendo do titulo"
+}

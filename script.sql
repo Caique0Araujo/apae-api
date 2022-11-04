@@ -1,4 +1,3 @@
--- Active: 1667399386701@@127.0.0.1@3306
 CREATE DATABASE apae;
 USE apae;
 
@@ -11,7 +10,7 @@ CREATE TABLE news(
     is_enabled TINYINT(1) NOT NULL DEFAULT 1
 );
 
-CREATE TABLE product(
+CREATE TABLE products(
     id_product INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     description LONGTEXT NOT NULL,
@@ -27,7 +26,7 @@ CREATE TABLE donations(
     is_enabled TINYINT(1) NOT NULL DEFAULT 1 
 );
 
-CREATE TABLE bazaar_info(
+CREATE TABLE bazaar_infos(
     id_bazaar_info INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     title VARCHAR(45) NOT NULL,
     description VARCHAR(200) NOT NULL,

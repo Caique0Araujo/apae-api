@@ -1,5 +1,5 @@
-import setupApplication from './config';
+import { applicationFactory } from './main/factories/app/setServer';
 
-const app = setupApplication();
+const app = applicationFactory();
 
 app.start();
