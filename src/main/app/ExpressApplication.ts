@@ -1,6 +1,12 @@
 import { Application } from "./Application";
 import express from "express";
 import router from "../routes/express-routes/setupRoutes";
+import cors from 'cors';
+import helmet from 'helmet';
+import dotenv from 'dotenv'
+
+dotenv.config();
+
 import { databaseFactory } from "../factories/app/setDatabase";
 export class ExpressApplication implements Application {
   private server: any;
@@ -10,11 +16,10 @@ export class ExpressApplication implements Application {
   }
   setupMiddlewares(): void {
       this.server.use(express.json());
-      // Instalar pacotes
-      /*this.server.use(cors({
-        origin: 'http://localhost:5000/'
+      this.server.use(cors({
+        origin: process.env.SERVER_CORS
       }));
-      this.server.use(helmet());*/
+      this.server.use(helmet());
   }
   setupRouter(): void {
       this.server.use(router);
@@ -39,3 +44,4 @@ export class ExpressApplication implements Application {
           });
   }
 }
+
