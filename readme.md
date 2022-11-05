@@ -37,14 +37,12 @@ Retorna todos os produtos do banco de dados, o modelo de retorno pode ser visto 
 	{
 		"id_product": 1,
 		"name": "Açaí",
-		"description": "Um açaí top de qualidade duvidosa, o qual pode te deixar com dor de barriga",
 		"price": "18.00000",
 		"image_path": ""
 	},
 	{
 		"id_product": 2,
 		"name": "Blusa",
-		"description": "Uma blusa pra vc",
 		"price": "35.50000",
 		"image_path": ""
 	},
