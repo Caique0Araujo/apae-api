@@ -14,7 +14,7 @@ CREATE TABLE products(
     id_product INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     description LONGTEXT NOT NULL,
-    price DECIMAL(8, 5) NOT NULL,
+    price DECIMAL(16, 5) NOT NULL,
     image_path VARCHAR(200) NOT NULL,
     is_enabled TINYINT(1) NOT NULL DEFAULT 1
 );
