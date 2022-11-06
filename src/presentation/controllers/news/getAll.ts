@@ -7,9 +7,13 @@ export class GetNewsController implements Controller{
         private readonly getNewsUseCase: GetNewsUseCase
     ){}
     
-    async handle(): Promise<HttpResponse<any>>{
+    async handle(data: any): Promise<HttpResponse<any>>{
         try {
-            const news = await this.getNewsUseCase.load();
+            console.log(data.start)
+            if(data.start == 0){
+                throw Error('O primeiro número não pode ser 0');
+            }
+            const news = await this.getNewsUseCase.load(data);
             return ok(news);
             
         } catch (error) {

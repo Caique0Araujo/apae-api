@@ -6,6 +6,6 @@ import { getNewsController } from "../../factories/controllers/news/getAll";
 const router = Router();
 
 router.post('/create', adaptRoute(createNewsController()));
-router.get('/all', adaptRoute(getNewsController()));
+router.get('/:start/:end', adaptRoute(getNewsController()));
 
 export { router as newsRoutes };

@@ -7,7 +7,7 @@ export class GetNewsService implements GetNewsUseCase{
         private readonly getNewsRepository: GetNewsRepository
     ){}
 
-    async load(): Promise<News[]> {
-        return await this.getNewsRepository.getAll();
+    async load(data): Promise<News[]> {
+        return await this.getNewsRepository.getAll(data);
     }
 }
