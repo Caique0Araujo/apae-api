@@ -3,14 +3,13 @@ import { GetNewsRepository } from "../../../../data/interfaces/news/getAllReposi
 import { News as NewsSequelize } from "../../../dataSource/sequelize/news";
 
 export class GetNewsRepositorySequelize implements GetNewsRepository{
-    async getAll(data): Promise<News[]> {
-        const start: number = data.start - 1;
-        const limit: number = data.end - start;
-        console.log(start, limit);
+    async getAll(data: any): Promise<News[]> {
+        const start: number = parseInt(data.start);
+        const limit: number = (data.end - data.start);
 
         return await NewsSequelize.findAll({
             raw: true, 
-            limit, 
+            limit: limit, 
             offset: start,
             where: {is_enabled: true } 
         }); 

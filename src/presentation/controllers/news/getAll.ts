@@ -9,10 +9,6 @@ export class GetNewsController implements Controller{
     
     async handle(data: any): Promise<HttpResponse<any>>{
         try {
-            console.log(data.start)
-            if(data.start == 0){
-                throw Error('O primeiro número não pode ser 0');
-            }
             const news = await this.getNewsUseCase.load(data);
             return ok(news);
             
