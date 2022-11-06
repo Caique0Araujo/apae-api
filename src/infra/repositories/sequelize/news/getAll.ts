@@ -8,6 +8,9 @@ export class GetNewsRepositorySequelize implements GetNewsRepository{
         const limit: number = (data.end - data.start);
 
         return await NewsSequelize.findAll({
+            order: [
+                ['created_at_utc', 'DESC'],
+            ],
             raw: true, 
             limit: limit, 
             offset: start,
