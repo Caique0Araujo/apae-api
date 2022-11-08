@@ -49,6 +49,23 @@ Retorna todos os produtos do banco de dados em ordem alfabética, o modelo de re
 ]
 ```
 
+### (GET) ~/products/byId/{id}
+Deverá retornar um produto que será identificada pelo seu Id. O campo **{id}** é onde deverá ser preenchido com o *Id do produto*.
+
+#### Exemplo de requisição
+> ~/products/byId/5
+
+#### Exemplo de retorno
+```json
+{
+	"id_product": 1,
+	"name": "Nome do produto",
+	"description": "Todas as informações sobre o produto",
+	"price": 5.85,
+	"image_path": "Caminho da imagem"
+}
+```
+
 ### (GET) ~/news/recents/{start}/{end}
 Deverá retornar todos as notícias mais recentes do banco de dados. As variáveis **start** e **end** representam a quantidade de notícias a serem apresentadas, por exemplo, o navegador irá passar 0 e 5, então deverá passar as 5 notícias mais recentes iniciando de 0, se informar 5 e 10, sendo 5 para **start** e 10 para **end**, deverá informar as 5 notícias mais recentes após as 5 anteriores, no caso seriam apresentadas as notícias *6, 7, 8, 9 e 10*. As notícias deverão ser retornadas por ordem de mais rescente e devem estar ativas no banco de dados.
 
@@ -73,4 +90,21 @@ Deverá retornar todos as notícias mais recentes do banco de dados. As variáve
 		"created_at_utc": "data em que foi criada, a data deve estar em UTC"
 	},
 ]
+```
+
+### (GET) ~/news/byId/{id}
+Deverá retornar uma notícia que será identificada pelo seu Id. O campo **{id}** é onde deverá ser preenchido com o *Id da notícia*.
+
+#### Exemplo de requisição
+> ~/news/byId/5
+
+#### Exemplo de retorno
+```json
+{
+	"id_news": 1,
+	"title": "Título da matéria",
+	"text": "Todas as informações sobre a matéria",
+	"image_path": "Caminho da imagem",
+	"created_at_utc": "Data em que foi criada"
+}
 ```
