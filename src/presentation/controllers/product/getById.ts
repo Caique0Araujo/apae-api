@@ -9,7 +9,7 @@ export class GetProductByIdController implements Controller {
 
   async handle(data: any): Promise<HttpResponse<any>> {
       try {
-        const product = await this.getProductByIdUseCase.load(data);
+        const product = await this.getProductByIdUseCase.load(data.id);
         return ok(product);
       } catch (error) {
         return notFound(error)

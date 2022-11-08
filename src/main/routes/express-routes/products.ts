@@ -8,6 +8,6 @@ const router = Router();
 
 router.post('/create', adaptRoute(createProductController()));
 router.get('/all', adaptRoute(getProductsController()));
-router.get('/:id', adaptRoute(getProductByIdController()));
+router.get('/byId/:id', adaptRoute(getProductByIdController()));
 
 export { router as productRoutes };
