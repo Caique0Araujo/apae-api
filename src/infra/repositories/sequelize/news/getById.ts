@@ -8,6 +8,7 @@ export class GetNewsByIdRepositorySequelize implements GetNewsByIdRepository {
       const news = await NewsRepo.findOne({
         raw: true,
         where: { id_news: id, is_enabled: true },
+        attributes: ['id_news', 'title', 'text', 'image_path', 'created_at_utc'],
       })
 
       if(!news)

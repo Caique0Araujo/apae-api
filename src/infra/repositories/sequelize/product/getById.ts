@@ -8,6 +8,7 @@ export class GetProductByIdRepositorySequelize implements GetProductByIdReposito
       const product = await Products.findOne({
         raw: true,
         where: { id_product: id, is_enabled: true },
+        attributes: ['id_product', 'name', 'description', 'price', 'image_path'],
       })
 
       if(!product)
