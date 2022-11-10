@@ -1,5 +1,5 @@
 import { GetNewsUseCase } from "../../../domain/useCases/news/getAll";
-import { notFound, ok, HttpResponse} from "../http";
+import { serverError, ok, HttpResponse} from "../http";
 import { Controller } from "../controller";
 
 export class GetNewsController implements Controller{
@@ -13,7 +13,7 @@ export class GetNewsController implements Controller{
             return ok(news);
             
         } catch (error) {
-            return notFound(error);
+            return serverError(error);
         }
     }
 }

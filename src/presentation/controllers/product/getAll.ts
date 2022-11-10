@@ -1,5 +1,5 @@
 import { GetProductsUseCase } from "../../../domain/useCases/product/getAll";
-import { notFound, ok, HttpResponse} from "../http";
+import { serverError, ok, HttpResponse} from "../http";
 import { Controller } from "../controller";
 
 export class GetProductsController implements Controller{
@@ -13,7 +13,7 @@ export class GetProductsController implements Controller{
             return ok(products);
             
         } catch (error) {
-            return notFound(error);
+            return serverError(error);
         }
     }
 }

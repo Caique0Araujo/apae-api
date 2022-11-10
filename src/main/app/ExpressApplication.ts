@@ -31,17 +31,25 @@ export class ExpressApplication implements Application {
     this.setupMiddlewares();
     this.setupRouter();
     this.setupDatabase();
-    this.databaseConnection.connection.sync()
-        .then(() => {
-            const port = process.env.SERVER_PORT
-            this.server.listen( 
-              port || 3000
-              //, ()=>console.log('API running on port:',port)
-            );
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+    if(!this.databaseConnection){
+      this.server.listen( 
+        process.env.SERVER_PORT || 3000
+        //, ()=>console.log('API running on port:',port)
+      );
+    }else{
+      this.databaseConnection.connection.sync()
+      .then(() => {
+          const port = process.env.SERVER_PORT
+          this.server.listen( 
+            port || 3000
+            //, ()=>console.log('API running on port:',port)
+          );
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+    
   }
 }
 

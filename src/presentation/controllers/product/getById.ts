@@ -1,6 +1,6 @@
 import { GetProductByIdUseCase } from "../../../domain/useCases/product/getById";
 import { Controller } from "../controller";
-import { HttpResponse, notFound, ok } from "../http";
+import { HttpResponse, serverError, ok } from "../http";
 
 export class GetProductByIdController implements Controller {
   constructor(
@@ -12,7 +12,7 @@ export class GetProductByIdController implements Controller {
         const product = await this.getProductByIdUseCase.load(data.id);
         return ok(product);
       } catch (error) {
-        return notFound(error)
+        return serverError(error)
       }
   }
 }
