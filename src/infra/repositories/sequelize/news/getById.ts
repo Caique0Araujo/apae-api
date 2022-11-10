@@ -1,6 +1,7 @@
 import { News } from "../../../../data/dto/news";
 import { GetNewsByIdRepository } from "../../../../data/interfaces/news/getByIdRepository";
 import {News as NewsRepo} from "../../../dataSource/sequelize/news";
+import { NotFoundError } from "../../../../domain/errors/NotFoundError";
 
 export class GetNewsByIdRepositorySequelize implements GetNewsByIdRepository {
   async getById(id: number): Promise<News> {
@@ -12,7 +13,7 @@ export class GetNewsByIdRepositorySequelize implements GetNewsByIdRepository {
       })
 
       if(!news)
-        throw Error("Notícia não encontrado");
+        throw new NotFoundError();
 
       return news;
   }

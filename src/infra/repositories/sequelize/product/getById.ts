@@ -1,6 +1,7 @@
 import { Product } from "../../../../data/dto/product";
 import { GetProductByIdRepository } from "../../../../data/interfaces/product/getByIdRepository";
 import Products from "../../../dataSource/sequelize/products";
+import { NotFoundError } from "../../../../domain/errors/NotFoundError";
 
 export class GetProductByIdRepositorySequelize implements GetProductByIdRepository {
   async getById(id: number): Promise<Product> {
@@ -12,7 +13,7 @@ export class GetProductByIdRepositorySequelize implements GetProductByIdReposito
       })
 
       if(!product)
-        throw Error("Produto não encontrado");
+        throw new NotFoundError();
 
       return product;
   }
