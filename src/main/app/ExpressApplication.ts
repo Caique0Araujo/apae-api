@@ -8,6 +8,7 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 import { databaseFactory } from "../factories/app/setDatabase";
+import User from "../../infra/dataSource/sequelize/user";
 export class ExpressApplication implements Application {
   private server: any;
   private databaseConnection: any;
@@ -26,6 +27,7 @@ export class ExpressApplication implements Application {
   }
   setupDatabase(): void {
     this.databaseConnection = databaseFactory()
+
   }
   start(): void {
     this.setupMiddlewares();
