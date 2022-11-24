@@ -18,7 +18,7 @@ export class ExpressApplication implements Application {
   setupMiddlewares(): void {
       this.server.use(express.json());
       this.server.use(cors({
-        origin: process.env.SERVER_CORS
+        origin: [process.env.SERVER_CORS1, process.env.SERVER_CORS2]
       }));
       this.server.use(helmet());
   }
