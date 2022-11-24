@@ -5,7 +5,7 @@ export type HttpResponse<T = any> = {
 
 export const login = (body: any, token: string): HttpResponse => ({
     status: 200,
-    body: {body, token},
+    body: {token},
 })
 
 export const serverError = (error: Error): HttpResponse => ({
