@@ -3,9 +3,9 @@ export type HttpResponse<T = any> = {
     body: T
 }
 
-export const login = (body: any, token: string, expire_date_UTC: any): HttpResponse => ({
+export const login = (body: any, token: string, expires_date_UTC: any): HttpResponse => ({
     status: 200,
-    body: {token, expire_date_UTC},
+    body: {token, expires_date_UTC},
 })
 
 export const serverError = (error: Error): HttpResponse => ({
