@@ -13,7 +13,9 @@ export class LoginController implements Controller {
       try {
         const user = await this.loginUseCase.load(data);
         const token = await generateJwtToken(user.id_user);
-        return login(user, token);
+        const current = new Date(); //'Mar 11 2015' current.getTime() = 1426060964567
+        const expire_date_UTC = new Date(current.getTime() + 86400000); // + 1 day in ms
+        return login(user, token, expire_date_UTC);
       } catch (error) {
         return badRequest(error)
       }
