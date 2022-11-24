@@ -6,6 +6,7 @@ import user from '../../../dataSource/sequelize/user';
 
 export class LoginRepositorySequelize implements LoginRepository{
   async login(data: any): Promise<User> {
+
       const user_from_DB = await user.findOne({
         raw: true,
         where: {login: data.login, is_enabled: true}

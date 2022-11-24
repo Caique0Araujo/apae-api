@@ -15,7 +15,7 @@ export const serverError = (error: Error): HttpResponse => ({
 
 export const created = (body: any): HttpResponse => ({
     status: 201,
-    body: body
+    body: {result: true}
 })
 
 export const ok = (body: any): HttpResponse => ({

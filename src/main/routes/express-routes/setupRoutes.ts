@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { authRoutes } from "./auth";
 import { bazarInfoRoutes } from "./bazaar_info";
 import { defaultRoutes } from "./default";
 import { donationsRoutes } from "./donations";
@@ -9,7 +8,6 @@ import { userRoutes } from "./user";
 
 const router = Router();
 
-router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
 router.use('/products', productRoutes);
 router.use('/bazaar_info', bazarInfoRoutes);
