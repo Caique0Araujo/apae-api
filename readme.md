@@ -122,7 +122,8 @@ Para que o método funcione corretamente, o corpo abaixo deverá ser passado:
 E o *JSON* abaixo deverá ser retornado para a aplicação:
 ```json
 {
-	"token": "token"
+	"token": "token",
+	"expires_utc_date": "2022*-01-01T01:01:01"
 }
 ```
 
