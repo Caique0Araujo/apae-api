@@ -129,7 +129,7 @@ E o *JSON* abaixo deverá ser retornado para a aplicação:
 
 ### (POST) ~/users/create
 Utilizado para a criação de usuários, para acessar o EndPoint o Token deverá ser passado na autenticação da requisição, o tipo de requisição deverá ser **Bearer**.
-Para a criação do de algum usuário, o JSON abaixo deverá ser passado:
+Para a criação de algum usuário, o JSON abaixo deverá ser passado:
 ```json
 {
 	"name": "Matheus",
