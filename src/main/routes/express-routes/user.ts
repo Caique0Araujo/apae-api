@@ -4,6 +4,8 @@ import { loginController } from '../../factories/controllers/auth/login';
 import { createUserController } from '../../factories/controllers/user/create';
 import { getUserByIdController } from '../../factories/controllers/user/getById';
 import { authenticateRoute } from '../../../presentation/middlewares/auth';
+import { getUsersController } from '../../factories/controllers/user/getAll';
+import { updateUsersController } from '../../factories/controllers/user/update';
 
 const router = Router();
 
@@ -11,5 +13,7 @@ router.post('/login', adaptRoute(loginController()));
 router.use(authenticateRoute);
 router.post('/create', adaptRoute(createUserController()));
 router.get('/byId/:id', adaptRoute(getUserByIdController()));
+router.get('/getAll', adaptRoute(getUsersController()));
+router.put('/edit', adaptRoute(updateUsersController()));
 
 export {router as userRoutes};

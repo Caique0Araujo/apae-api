@@ -25,7 +25,7 @@ export const ok = (body: any): HttpResponse => ({
 
 export const updated = (): HttpResponse => ({
     status: 200,
-    body: 'User updated!'
+    body: []
 })
 
 export const deleted = (): HttpResponse => ({

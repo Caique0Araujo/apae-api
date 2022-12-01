@@ -16,9 +16,7 @@ export class GetProductsRepositorySequelize implements GetProductsRepository{
                 ]
             }); 
 
-        if(!products){
-            throw new NotFoundError();
-        }
+        if(!products) throw new NotFoundError();
         return products;
     }
 }
