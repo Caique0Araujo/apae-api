@@ -144,3 +144,16 @@ E o *JSON* abaixo deverá ser retornado:
 	"result": true
 }
 ```
+
+### (POST) ~/users/getAll
+Utilizado para se obter todos os usuários que não foram excluídos do sistema. Para acessar o EndPoint o Token deverá ser passado na autenticação da requisição, o tipo de requisição deverá ser **Bearer**.
+E o *JSON* abaixo deverá ser retornado:
+```json
+[
+    {
+        "id": 1,
+        "name": "Ana Maria Braga",
+        "login": "ana.braga"
+    }
+]
+```
