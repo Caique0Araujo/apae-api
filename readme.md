@@ -157,3 +157,17 @@ E o *JSON* abaixo deverá ser retornado:
     }
 ]
 ```
+
+### (PUT) ~/users/edit
+Utilizado para se atualizar os dados do usuário de acordo com o seu **Id**. Para acessar o EndPoint o Token deverá ser passado na autenticação da requisição, o tipo de requisição deverá ser **Bearer**.
+E o *JSON* abaixo deverá ser passado:
+```json
+{
+	"id": 1,
+	"name": "Matheus",
+	"login": "matheus",
+	"password": "123456"
+}
+```
+
+O retorno deverá ser um **Status 200** em casos de sucesso.
