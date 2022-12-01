@@ -12,8 +12,7 @@ export class GetNewsByIdRepositorySequelize implements GetNewsByIdRepository {
         attributes: ['id_news', 'title', 'text', 'image_path', 'created_at_utc'],
       })
 
-      if(!news)
-        throw new NotFoundError();
+      if(!news) throw new NotFoundError('News');
 
       return news;
   }

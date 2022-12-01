@@ -18,10 +18,7 @@ export class GetNewsRepositorySequelize implements GetNewsRepository{
             where: {is_enabled: true } 
         }); 
 
-        if(!news){
-            throw new NotFoundError();
-        }
-
+        if(!news) throw new NotFoundError('News');
         return news;
     }
 }

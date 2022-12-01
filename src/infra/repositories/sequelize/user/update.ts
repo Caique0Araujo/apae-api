@@ -8,7 +8,7 @@ import { userExists } from "./exists";
 export class UpdateUserRepositorySequelize implements UpdateUserRepository {
   async update(user: User): Promise<Boolean> {
 
-    if (await userExists(user.id_user)) throw new NotFoundError();
+    if (await userExists(user.id_user)) throw new NotFoundError('User');
 
     user.password = await encrypt(user.password)  
 

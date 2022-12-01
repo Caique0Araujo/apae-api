@@ -1,5 +1,5 @@
 export class NotFoundError extends Error {
-    constructor(){
-        super("Data not found");
+    constructor(name: string){
+        super(`${name} not found`);
     }
 }

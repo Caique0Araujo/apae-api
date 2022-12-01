@@ -13,7 +13,7 @@ export class GetUsersRepositorySequelize implements GetUsersRepository {
         }
       )
 
-      if(!users) throw new NotFoundError();
+      if(!users) throw new NotFoundError('Users');
       return users;
   }
 }

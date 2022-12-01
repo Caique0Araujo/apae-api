@@ -13,7 +13,7 @@ export class GetProductByIdRepositorySequelize implements GetProductByIdReposito
       })
 
       if(!product)
-        throw new NotFoundError();
+        throw new NotFoundError('Product');
 
       return product;
   }

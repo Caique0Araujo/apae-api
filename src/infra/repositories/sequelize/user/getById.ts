@@ -9,7 +9,7 @@ export class GetUserByIdRepositorySequelize implements GetUserByIdRepository{
         raw: true,
         where: {id_user: id, is_enabled: true}
       })
-      if(!user_from_DB) throw new NotFoundError()
+      if(!user_from_DB) throw new NotFoundError('User')
       return user_from_DB;
   }
 }
