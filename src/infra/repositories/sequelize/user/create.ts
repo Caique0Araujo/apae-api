@@ -8,6 +8,7 @@ import { loginValidation } from "./loginValidation";
 export class CreateUserRepositorySequelize implements CreateUserRepository{
   async create(newUser: User): Promise<User> {
 
+
     if(await loginValidation(newUser.login)) throw new AlreadyExistsError('login');
 
     newUser.password = await encrypt(newUser.password); 
