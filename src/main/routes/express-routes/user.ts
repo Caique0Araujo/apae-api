@@ -13,7 +13,7 @@ const router = Router();
 router.post('/login', adaptRoute(loginController()));
 router.use(authenticateRoute);
 router.post('/create', adaptRoute(createUserController()));
-router.get('/byId/:id', adaptRoute(getUserByIdController()));
+router.get('/getById/:id', adaptRoute(getUserByIdController()));
 router.get('/getAll', adaptRoute(getUsersController()));
 router.put('/edit', adaptRoute(updateUsersController()));
 router.delete('/delete/:id', adaptRoute(deleteUserController()));
