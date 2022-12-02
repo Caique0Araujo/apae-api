@@ -9,7 +9,7 @@ export class CreateProductController implements Controller{
 
     async handle(data: any): Promise<HttpResponse<any>> {
         try {
-            const product = await this.createProductUseCase.load(data);
+            const product = await this.createProductUseCase.load(data.content);
             return created(product);
         } catch (error) {  
             if(!error.status) error.status = 500

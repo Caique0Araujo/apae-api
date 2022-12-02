@@ -9,7 +9,7 @@ export class CreateNewsController implements Controller{
 
     async handle(data: any): Promise<HttpResponse<any>> {
         try {
-            const news = await this.createNewsUseCase.load(data);
+            const news = await this.createNewsUseCase.load(data.content);
             news.created_at_utc = Date.now()
             return created(news);
         } catch (error) { 

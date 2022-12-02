@@ -9,7 +9,7 @@ export class CreateDonationController implements Controller{
 
     async handle(data: any): Promise<HttpResponse<any>> {
         try {
-            const donation = await this.createDonationUseCase.load(data);
+            const donation = await this.createDonationUseCase.load(data.content);
             return created(donation);
         } catch (error) {  
             if(!error.status) error.status = 500

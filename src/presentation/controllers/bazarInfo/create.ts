@@ -9,7 +9,7 @@ export class CreateBazaarInfoController implements Controller{
 
     async handle(data: any): Promise<HttpResponse<any>> {
         try {
-            const bazaarInfo = await this.createBazaarInfoUseCase.load(data);
+            const bazaarInfo = await this.createBazaarInfoUseCase.load(data.content);
             return created(bazaarInfo);
         } catch (error) { 
             if(!error.status) error.status = 500

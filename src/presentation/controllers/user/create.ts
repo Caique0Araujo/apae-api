@@ -12,7 +12,7 @@ export class CreateUserController implements Controller {
 
   async handle(data: any): Promise<HttpResponse<any>> {
       try {
-        const user = await this.createUserUseCase.load(data);
+        const user = await this.createUserUseCase.load(data.content);
         return created(user);
       } catch (error) {
         if(!error.status) error.status = 500

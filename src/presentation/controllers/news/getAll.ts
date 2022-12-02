@@ -9,7 +9,7 @@ export class GetNewsController implements Controller{
     
     async handle(data: any): Promise<HttpResponse<any>>{
         try {
-            const news = await this.getNewsUseCase.load(data);
+            const news = await this.getNewsUseCase.load(data.content);
             return ok(news);
             
         } catch (error) {

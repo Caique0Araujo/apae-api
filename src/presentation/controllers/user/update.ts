@@ -9,7 +9,7 @@ export class UpdateUserController implements Controller {
 
   async handle(data: any): Promise<HttpResponse<any>> {
       try {
-        await this.updateUserUseCase.load(data)
+        await this.updateUserUseCase.load(data.content)
         return updated();
       } catch (error) {
         if(!error.status) error.status = 500

@@ -12,7 +12,7 @@ export class LoginController implements Controller {
 
   async handle(data: any): Promise<HttpResponse<any>> {
       try {
-        const user = await this.loginUseCase.load(data);
+        const user = await this.loginUseCase.load(data.content);
         const token = await generateJwtToken(user.id_user);
         const current = new Date();
         const expire_date_UTC = new Date(current.getTime() + expireDate._in_milliseconds);

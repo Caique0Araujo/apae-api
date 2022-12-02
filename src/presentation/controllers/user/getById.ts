@@ -9,7 +9,7 @@ export class GetUserByIdController implements Controller {
 
   async handle(data: any): Promise<HttpResponse<any>> {
       try {
-        const user = await this.getUserByIdUseCase.load(data.id);
+        const user = await this.getUserByIdUseCase.load(data.content.id);
         return ok (user);
       } catch (error) {
         if(!error.status) error.status = 500
