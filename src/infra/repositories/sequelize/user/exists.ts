@@ -6,7 +6,7 @@ export const userExists = async (id: any) => {
         where: {id_user: id, is_enabled: true}
       })
     if(!user){
-        return true;
+        return false;
     }
-    return false;
+    return user;
 }

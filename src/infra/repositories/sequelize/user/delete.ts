@@ -11,8 +11,10 @@ export class DeleteUserRepositorySequelize implements DeleteUserRepository {
 
     console.log(data)
 
+    const user_exists = await userExists(data.id)
 
-    if (await userExists(data.id)) throw new NotFoundError('User');
+
+    if (!user_exists) throw new NotFoundError('User');
     return await User.update({is_enabled: 0}, {where: {id_user: data.id}}) ? true : false
   }
 }

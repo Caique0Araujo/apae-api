@@ -6,7 +6,7 @@ export const loginValidation = async (login: any) => {
         where: {login, is_enabled: true}
     });
     if(userFromDb){
-        return true;
+        return userFromDb;
     }
     return false;
 }
