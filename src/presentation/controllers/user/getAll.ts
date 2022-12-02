@@ -1,4 +1,4 @@
-import { serverError, ok, HttpResponse} from "../http";
+import { serverError, ok, HttpResponse, defaultError} from "../http";
 import { Controller } from "../controller";
 import { GetUsersUseCase } from "../../../domain/useCases/user/getAll";
 
@@ -13,7 +13,9 @@ export class GetUsersController implements Controller {
         const users = await this.getUsersUseCase.load();
         return ok(users)
       } catch (error) {
-        return serverError(error);
+        if(!error.status) error.status = 500
+        return defaultError(error)
+
       }
   }
 }

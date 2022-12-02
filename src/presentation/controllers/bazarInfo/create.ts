@@ -1,5 +1,5 @@
 import { CreateBazaarInfoUseCase } from "../../../domain/useCases/bazaar-info/create";
-import { badRequest, created, HttpResponse} from "../http";
+import { badRequest, created, defaultError, HttpResponse} from "../http";
 import { Controller } from "../controller";
 
 export class CreateBazaarInfoController implements Controller{
@@ -11,8 +11,9 @@ export class CreateBazaarInfoController implements Controller{
         try {
             const bazaarInfo = await this.createBazaarInfoUseCase.load(data);
             return created(bazaarInfo);
-        } catch (error) {  
-            return badRequest(error);
+        } catch (error) { 
+            if(!error.status) error.status = 500
+            return defaultError(error);
         }
     }
 }

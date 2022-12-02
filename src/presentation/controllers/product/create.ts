@@ -1,5 +1,5 @@
 import { CreateProductUseCase } from "../../../domain/useCases/product/create";
-import { badRequest, created, HttpResponse} from "../http";
+import { badRequest, created, defaultError, HttpResponse} from "../http";
 import { Controller } from "../controller";
 
 export class CreateProductController implements Controller{
@@ -12,7 +12,8 @@ export class CreateProductController implements Controller{
             const product = await this.createProductUseCase.load(data);
             return created(product);
         } catch (error) {  
-            return badRequest(error);
+            if(!error.status) error.status = 500
+            return defaultError(error);
         }
     }
 }

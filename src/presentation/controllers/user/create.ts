@@ -1,6 +1,9 @@
+import { AlreadyExistsError } from "../../../domain/errors/AlreadyExists";
+import { InvalidFieldError } from "../../../domain/errors/InvalidField";
+import { NotFoundError } from "../../../domain/errors/NotFoundError";
 import { CreateUserUseCase } from "../../../domain/useCases/user/create";
 import { Controller } from "../controller";
-import { badRequest, created, HttpResponse } from "../http";
+import { badRequest, created, defaultError, HttpResponse, notFound, serverError } from "../http";
 
 export class CreateUserController implements Controller {
   constructor(
@@ -12,7 +15,8 @@ export class CreateUserController implements Controller {
         const user = await this.createUserUseCase.load(data);
         return created(user);
       } catch (error) {
-        return badRequest(error);
+        if(!error.status) error.status = 500
+        return defaultError(error)
       }
   }
 }

@@ -1,6 +1,6 @@
 import { UpdateUserUseCase } from "../../../domain/useCases/user/update";
 import { Controller } from "../controller";
-import { HttpResponse, serverError, updated } from "../http";
+import { defaultError, HttpResponse, serverError, updated } from "../http";
 
 export class UpdateUserController implements Controller {
   constructor(
@@ -12,7 +12,8 @@ export class UpdateUserController implements Controller {
         await this.updateUserUseCase.load(data)
         return updated();
       } catch (error) {
-        return serverError(error);
+        if(!error.status) error.status = 500
+        return defaultError(error)
       }
   }
 }

@@ -28,9 +28,9 @@ export const updated = (): HttpResponse => ({
     body: []
 })
 
-export const deleted = (): HttpResponse => ({
+export const deleted = (value: any): HttpResponse => ({
     status: 204,
-    body: 'User Deleted!'
+    body: {result: value}
 })
 
 export const badRequest = (error: Error): HttpResponse => ({
@@ -44,5 +44,10 @@ export const notFound = (error: Error): HttpResponse => ({
 })
 export const notAuthorized = (error: Error): HttpResponse => ({
     status: 401,
+    body: error.message
+})
+
+export const defaultError = (error: any): HttpResponse => ({
+    status: error.status,
     body: error.message
 })

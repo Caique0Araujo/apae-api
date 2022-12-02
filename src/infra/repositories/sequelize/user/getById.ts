@@ -7,7 +7,8 @@ export class GetUserByIdRepositorySequelize implements GetUserByIdRepository{
   async getById(id: number): Promise<User> {
       const user_from_DB = await user.findOne({
         raw: true,
-        where: {id_user: id, is_enabled: true}
+        where: {id_user: id, is_enabled: true},
+        attributes: ['id_user', 'name', 'login', 'password']
       })
       if(!user_from_DB) throw new NotFoundError('User')
       return user_from_DB;

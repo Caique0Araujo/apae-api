@@ -1,5 +1,5 @@
 import { GetBazaarInfosUseCase } from "../../../domain/useCases/bazaar-info/getAll";
-import { notFound, ok, HttpResponse} from "../http";
+import { notFound, ok, HttpResponse, defaultError} from "../http";
 import { Controller } from "../controller";
 
 export class GetBazaarInfosController implements Controller{
@@ -13,7 +13,8 @@ export class GetBazaarInfosController implements Controller{
             return ok(bazaarInfo);
             
         } catch (error) {
-            return notFound(error);
+            if(!error.status) error.status = 500
+            return defaultError(error);
         }
     }
 }

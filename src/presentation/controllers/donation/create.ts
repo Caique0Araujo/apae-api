@@ -1,5 +1,5 @@
 import { CreateDonationUseCase } from "../../../domain/useCases/donation/create";
-import { badRequest, created, HttpResponse} from "../http";
+import { badRequest, created, defaultError, HttpResponse} from "../http";
 import { Controller } from "../controller";
 
 export class CreateDonationController implements Controller{
@@ -12,7 +12,8 @@ export class CreateDonationController implements Controller{
             const donation = await this.createDonationUseCase.load(data);
             return created(donation);
         } catch (error) {  
-            return badRequest(error);
+            if(!error.status) error.status = 500
+            return defaultError(error);
         }
     }
 }

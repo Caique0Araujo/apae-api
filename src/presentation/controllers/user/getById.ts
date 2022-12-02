@@ -1,6 +1,6 @@
 import { GetUserByIdUseCase } from "../../../domain/useCases/user/getById";
 import { Controller } from "../controller";
-import { HttpResponse, serverError, ok } from "../http";
+import { HttpResponse, defaultError, ok } from "../http";
 
 export class GetUserByIdController implements Controller {
   constructor(
@@ -12,7 +12,8 @@ export class GetUserByIdController implements Controller {
         const user = await this.getUserByIdUseCase.load(data.id);
         return ok (user);
       } catch (error) {
-        return serverError(error);
+        if(!error.status) error.status = 500
+        return defaultError(error);
       }
   }
 }

@@ -1,6 +1,8 @@
 export class AlreadyExistsError extends Error{
-  constructor(){
-      super('Login já cadastrado.');
+  status: number;
+  constructor(name: string){
+      super(`This ${name} already exists`);
       this.name = 'AlreadyExistsError';
+      this.status = 400
   }
 }

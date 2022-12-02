@@ -6,6 +6,7 @@ import { getUserByIdController } from '../../factories/controllers/user/getById'
 import { authenticateRoute } from '../../../presentation/middlewares/auth';
 import { getUsersController } from '../../factories/controllers/user/getAll';
 import { updateUsersController } from '../../factories/controllers/user/update';
+import { deleteUserController } from '../../factories/controllers/user/delete';
 
 const router = Router();
 
@@ -15,5 +16,6 @@ router.post('/create', adaptRoute(createUserController()));
 router.get('/byId/:id', adaptRoute(getUserByIdController()));
 router.get('/getAll', adaptRoute(getUsersController()));
 router.put('/edit', adaptRoute(updateUsersController()));
+router.delete('/delete/:id', adaptRoute(deleteUserController()));
 
 export {router as userRoutes};

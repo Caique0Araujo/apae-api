@@ -1,5 +1,5 @@
 import { CreateNewsUseCase } from "../../../domain/useCases/news/create";
-import { badRequest, created, HttpResponse} from "../http";
+import { badRequest, created, defaultError, HttpResponse} from "../http";
 import { Controller } from "../controller";
 
 export class CreateNewsController implements Controller{
@@ -12,8 +12,9 @@ export class CreateNewsController implements Controller{
             const news = await this.createNewsUseCase.load(data);
             news.created_at_utc = Date.now()
             return created(news);
-        } catch (error) {  
-            return badRequest(error);
+        } catch (error) { 
+            if(!error.status) error.status = 500
+            return defaultError(error);
         }
     }
 }

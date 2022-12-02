@@ -1,6 +1,6 @@
 import { GetNewsByIdUseCase } from "../../../domain/useCases/news/getById";
 import { Controller } from "../controller";
-import { HttpResponse, serverError, ok } from "../http";
+import { HttpResponse, serverError, ok, defaultError } from "../http";
 
 export class GetNewsByIdController implements Controller {
   constructor(
@@ -12,7 +12,8 @@ export class GetNewsByIdController implements Controller {
         const news = await this.getNewsByIdUseCase.load(data.id);
         return ok(news);
       } catch (error) {
-        return serverError(error)
+        if(!error.status) error.status = 500
+        return defaultError(error)
       }
   }
 }

@@ -1,5 +1,5 @@
 import { GetDonationsUseCase } from "../../../domain/useCases/donation/getAll";
-import { notFound, ok, HttpResponse} from "../http";
+import { notFound, ok, HttpResponse, defaultError} from "../http";
 import { Controller } from "../controller";
 
 export class GetDonationsController implements Controller{
@@ -13,7 +13,8 @@ export class GetDonationsController implements Controller{
             return ok(donations);
             
         } catch (error) {
-            return notFound(error);
+            if(!error.status) error.status = 500
+            return defaultError(error);
         }
     }
 }
