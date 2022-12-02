@@ -10,7 +10,7 @@ export class DeleteUserController implements Controller {
   async handle(data: any): Promise<HttpResponse<any>> {
       try {
         const user_deleted = await this.deleteUserUseCase.load(data);
-        return deleted();
+        return deleted(user_deleted);
       } catch (error) {
         if(!error.status) error.status = 500
         return defaultError(error)
