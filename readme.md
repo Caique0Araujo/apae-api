@@ -145,7 +145,7 @@ E o *JSON* abaixo deverá ser retornado:
 }
 ```
 
-### (POST) ~/users/getAll
+### (GET) ~/users/getAll
 Utilizado para se obter todos os usuários que não foram excluídos do sistema. Para acessar o EndPoint o Token deverá ser passado na autenticação da requisição, o tipo de requisição deverá ser **Bearer**.
 E o *JSON* abaixo deverá ser retornado:
 ```json
@@ -171,3 +171,22 @@ E o *JSON* abaixo deverá ser passado:
 ```
 
 O retorno deverá ser um **Status 200** em casos de sucesso.
+
+### (DELETE) ~/users/delete/:id
+Utilizado para deletar um usuário a partir do seu **Id**, nesse caso a coluna de **is_enabled** deverá ser 0. Para acessar o EndPoint o Token deverá ser passado na autenticação da requisição, o tipo de requisição deverá ser **Bearer**.
+
+O retorno deverá ser um **true**.
+
+### (GET) ~/users/getById/:id
+Utilizado para se obter os dados de um usuário especificado a partir do seu **Id**. Para acessar o EndPoint o Token deverá ser passado na autenticação da requisição, o tipo de requisição deverá ser **Bearer**.
+E o *JSON* abaixo deverá ser retornado:
+```json
+[
+    {
+        "id": 1,
+        "name": "Ana Maria Braga",
+        "login": "ana.braga",
+		"password": "aninha"
+    }
+]
+```
