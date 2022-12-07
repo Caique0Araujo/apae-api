@@ -11,7 +11,6 @@ export const adaptRoute = (controller: Controller) =>{
             const data = {content: '', token: '', file: null}
             data.file = req.files ? req.files.file : null;
             data.content = Object.keys(req.body).length ? req.body : req.params
-            console.log(data.content) 
             data.token = authHeader ? authHeader : null
             const httpResponse = await controller.handle(data);
             res.status(httpResponse.status).json(httpResponse.body)

@@ -1,3 +1,4 @@
+import  fileUpload  from 'express-fileupload';
 import { Router } from "express";
 import { authenticateRoute } from "../../../presentation/middlewares/auth";
 import { adaptRoute } from "../../adapters/expressRoutes/adapter";
@@ -10,6 +11,14 @@ const router = Router();
 router.get('/all', adaptRoute(getProductsController()));
 router.get('/byId/:id', adaptRoute(getProductByIdController()));
 router.use(authenticateRoute)
-router.post('/create', adaptRoute(createProductController()));
-
+router.post(
+  '/create' ,
+  fileUpload({
+    limits: {
+        fileSize: 30000000, 
+    },
+    abortOnLimit: true,
+  }), 
+  adaptRoute(createProductController())
+);
 export { router as productRoutes };
