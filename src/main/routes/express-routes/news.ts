@@ -7,12 +7,24 @@ import { getNewsByIdController } from "../../factories/controllers/news/getById"
 import { getNewsController } from "../../factories/controllers/news/getNews";
 import { deleteNewsController } from "../../factories/controllers/news/delete";
 
+import fileUpload from 'express-fileupload'
+
 const router = Router();
 
 router.get('/byId/:id', adaptRoute(getNewsByIdController())); 
 router.get('/recents/:start/:end', adaptRoute(getRecentNewsController()));
 router.use(authenticateRoute)
-router.post('/create', adaptRoute(createNewsController()));
+
+router.post(
+  '/create' ,
+  fileUpload({
+    limits: {
+        fileSize: 30000000, 
+    },
+    abortOnLimit: true,
+  }), 
+  adaptRoute(createNewsController())
+);
 
 router.get('/getAll', adaptRoute(getNewsController()));
 router.delete('/delete/:id', adaptRoute(deleteNewsController()));

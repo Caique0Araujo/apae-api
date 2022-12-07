@@ -5,10 +5,10 @@ import cors from 'cors';
 import helmet from 'helmet';
 import dotenv from 'dotenv'
 
+
 dotenv.config();
 
 import { databaseFactory } from "../factories/app/setDatabase";
-import User from "../../infra/dataSource/sequelize/user";
 export class ExpressApplication implements Application {
   private server: any;
   private databaseConnection: any;
@@ -16,7 +16,7 @@ export class ExpressApplication implements Application {
     this.server = express();
   }
   setupMiddlewares(): void {
-      this.server.use(express.json());
+    this.server.use(express.json());
       this.server.use(cors({
         origin: [process.env.SERVER_CORS1, process.env.SERVER_CORS2]
       }));
