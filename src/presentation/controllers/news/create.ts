@@ -14,7 +14,7 @@ export class CreateNewsController implements Controller{
 
         try {
             const image = data.file
-            const imagePath = __dirname+'../../../../../public/images/news/'+ uuidv4()+'.png'
+            const imagePath = __dirname+'../../../../../photos/news/'+ uuidv4()+'.png'
             image.mv(imagePath)
             data.content.image_path = imagePath
             //console.log(data.content)
