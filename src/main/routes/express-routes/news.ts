@@ -8,13 +8,14 @@ import { getNewsController } from "../../factories/controllers/news/getNews";
 import { deleteNewsController } from "../../factories/controllers/news/delete";
 
 import fileUpload from 'express-fileupload'
+import { countNewsController } from "../../factories/controllers/news/count";
 
 const router = Router();
 
 router.get('/byId/:id', adaptRoute(getNewsByIdController())); 
 router.get('/recents/:start/:end', adaptRoute(getRecentNewsController()));
 router.use(authenticateRoute)
-
+router.get('/count', adaptRoute(countNewsController()))
 router.post(
   '/create' ,
   fileUpload({
