@@ -12,6 +12,7 @@ export class GetNewsController implements Controller{
         const news:any = await this.getNewsUseCase.load();
         news.map((news) => {
           news.image_path = fs.readFileSync(news.image_path)
+          news.image_path = Buffer.from(news.image_path).toString('base64');
 
         })
         return ok(news);
