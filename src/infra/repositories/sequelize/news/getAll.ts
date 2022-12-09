@@ -6,6 +6,9 @@ export class GetNewsRepositorySequelize implements GetNewsRepository{
   async getAll(): Promise<News[]> {
     const news = await NewsSequelize.findAll({
       raw: true,
+      order: [
+        ['created_at_utc', 'DESC'],
+      ],
       where: {is_enabled: true } 
     }); 
 
