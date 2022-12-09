@@ -1,6 +1,7 @@
 import { GetProductsUseCase } from "../../../domain/useCases/product/getAll";
 import { serverError, ok, HttpResponse, defaultError} from "../http";
 import { Controller } from "../controller";
+import fs from 'fs'
 
 export class GetProductsController implements Controller{
     constructor(
@@ -9,7 +10,11 @@ export class GetProductsController implements Controller{
     
     async handle(): Promise<HttpResponse<any>>{
         try {
-            const products = await this.getProductsUseCase.load();
+            const products:any = await this.getProductsUseCase.load();
+            products.map((product) => {
+                product.image_path = fs.readFileSync(product.image_path);
+                product.image_path = Buffer.from(product.image_path).toString('base64')
+            })
             return ok(products);
             
         } catch (error) {
