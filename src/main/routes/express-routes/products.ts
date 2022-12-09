@@ -9,7 +9,7 @@ import { countProductsController } from '../../factories/controllers/product/cou
 
 const router = Router();
 
-router.get('/all', adaptRoute(getProductsController()));
+router.get('/getAll', adaptRoute(getProductsController()));
 router.get('/byId/:id', adaptRoute(getProductByIdController()));
 router.use(authenticateRoute)
 router.get('/count', adaptRoute(countProductsController()))
