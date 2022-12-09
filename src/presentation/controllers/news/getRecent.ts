@@ -11,8 +11,11 @@ export class GetRecentNewsController implements Controller{
     async handle(data: any): Promise<HttpResponse<any>>{
         try {
             const news:any = await this.getRecentNewsUseCase.load(data.content);
-            news.image_path = fs.readFileSync(news.image_path)
-             news.image_path = Buffer.from(news.image_path).toString('base64');
+            news.map((news) => {
+                news.image_path = fs.readFileSync(news.image_path)
+                news.image_path = Buffer.from(news.image_path).toString('base64');
+      
+              })
             return ok(news);
             
         } catch (error) {

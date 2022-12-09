@@ -17,7 +17,7 @@ router.post(
   '/create' ,
   fileUpload({
     limits: {
-        fileSize: 30000000, 
+        fileSize: 20000000, 
     },
     abortOnLimit: true,
   }), 
