@@ -10,7 +10,7 @@ export class DeleteNewsController implements Controller {
   async handle(data: any): Promise<HttpResponse<any>> {
       try {
         const news_deleted = await this.deleteNewsUseCase.load(data.content.id);
-        return news_deleted ? deleted(news_deleted) : defaultError(new NotFoundError('user'));
+        return news_deleted ? deleted(news_deleted) : defaultError(new NotFoundError('news'));
       } catch (error) {
         if(!error.status) error.status = 500
         return defaultError(error)
