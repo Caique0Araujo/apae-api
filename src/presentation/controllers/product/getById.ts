@@ -13,6 +13,7 @@ export class GetProductByIdController implements Controller {
         const product:any = await this.getProductByIdUseCase.load(data.content.id);
         product.image_path = fs.readFileSync(product.image_path);
         product.image_path = Buffer.from(product.image_path).toString('base64')
+        product.price =  parseFloat(product.price)
         return ok(product);
       } catch (error) {
         if(!error.status) error.status = 500
