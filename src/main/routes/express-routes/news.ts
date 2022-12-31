@@ -16,7 +16,7 @@ router.get('/byId/:id', adaptRoute(getNewsByIdController()));
 router.get('/recents/:start/:end',
 fileUpload({
   limits: {
-      fileSize: 20000000, 
+      fileSize: 5000000, 
   },
   abortOnLimit: true,
 }),  adaptRoute(getRecentNewsController()));
@@ -26,7 +26,7 @@ router.post(
   '/create' ,
   fileUpload({
     limits: {
-        fileSize: 20000000, 
+        fileSize: 5000000, 
     },
     abortOnLimit: true,
   }), 

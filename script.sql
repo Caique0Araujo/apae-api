@@ -4,7 +4,7 @@ USE apae;
 
 CREATE TABLE news(
     id_news INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(100) NOT NULL,
+    title VARCHAR(255) NOT NULL,
     text LONGTEXT NOT NULL,
     image_path VARCHAR(200) NOT NULL,
     created_at_utc DATETIME NOT NULL,

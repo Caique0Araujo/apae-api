@@ -13,7 +13,7 @@ const router = Router();
 
 const fileUpload_options = {
   limits: {
-      fileSize: 20000000, 
+      fileSize: 5000000, 
   },
   abortOnLimit: true,
 }
