@@ -13,7 +13,7 @@ import { countNewsController } from "../../factories/controllers/news/count";
 const router = Router();
 
 router.get('/byId/:id', adaptRoute(getNewsByIdController())); 
-router.get('/recents/:start/:end',
+router.get('/recents',
 fileUpload({
   limits: {
       fileSize: 5000000, 
