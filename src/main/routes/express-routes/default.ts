@@ -7,10 +7,6 @@ const fs = require("fs");
 
 router.get('/', (req, res) => {
   res.json({message: "apae-api by Caique Araújo :D."})
-  const writeStream = fs.createWriteStream(rootDir+'//photos//news//teste.txt');
-  writeStream.write("Hi, JournalDEV Users. ");
-  writeStream.write("Thank You.");
-  writeStream.end();
 
 })
 

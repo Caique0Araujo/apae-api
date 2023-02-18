@@ -3,6 +3,7 @@ import { badRequest, created, defaultError, HttpResponse} from "../http";
 import { Controller } from "../controller";
 import { v4 as uuidv4 } from 'uuid';
 const rootDir = require('path').resolve('./');
+import fs from 'fs'
 
 export class CreateProductController implements Controller{
     constructor(
@@ -10,10 +11,11 @@ export class CreateProductController implements Controller{
     ){}
 
     async handle(data: any): Promise<HttpResponse<any>> {
+        
 
-        const photoDir = rootDir+'\\photos\\products\\'
-        console.log(photoDir)
-
+        const photoDir = rootDir+'//photos//products//'
+        if(!fs.existsSync(photoDir)) 
+        fs.mkdirSync(photoDir);
         try {
             const image = data.file;
             const imageName = uuidv4()
