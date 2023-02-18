@@ -3,7 +3,7 @@ import { databaseFactory } from "../../../database/databaseFactory";
 
 const sequelize = databaseFactory().getConnection();
 
-const Bazaar_info = sequelize.define("Bazaar_info", {
+const Bazaar_info = sequelize.define("bazaar_info", {
   id_bazaar_info: {
     type: DataTypes.INTEGER,
     allowNull: false,
