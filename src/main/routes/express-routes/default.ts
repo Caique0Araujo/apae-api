@@ -7,8 +7,10 @@ const fs = require("fs");
 
 router.get('/', (req, res) => {
   res.json({message: "apae-api by Caique Araújo :D."})
-  const photoDir = '.\\'+rootDir+'\\photos\\news\\'
-  const writeStream = fs.createWriteStream('.\\'+rootDir+'\\photos\\news\\teste.txt');
+  const photoDir = rootDir+'\\photos\\news\\'
+  if(!fs.existsSync(rootDir+'/apae-api/photos/news/'))
+  fs.mkdirSync(rootDir+'/apae-api/photos/news/');
+  const writeStream = fs.createWriteStream(rootDir+'/apae-api/photos/news/test.txt');
   writeStream.write("Hi, JournalDEV Users. ");
   writeStream.write("Thank You.");
   writeStream.end();
