@@ -20,8 +20,7 @@ fileUpload({
   },
   abortOnLimit: true,
 }),  adaptRoute(getRecentNewsController()));
-router.use(authenticateRoute)
-router.get('/count', adaptRoute(countNewsController()))
+router.get('/count', adaptRoute(countNewsController()), authenticateRoute)
 router.post(
   '/create' ,
   fileUpload({
@@ -33,8 +32,8 @@ router.post(
   adaptRoute(createNewsController())
 );
 
-router.get('/getAll', adaptRoute(getNewsController()));
-router.delete('/delete/:id', adaptRoute(deleteNewsController()));
+router.get('/getAll', adaptRoute(getNewsController()), authenticateRoute);
+router.delete('/delete/:id', adaptRoute(deleteNewsController()), authenticateRoute);
 
 
 
