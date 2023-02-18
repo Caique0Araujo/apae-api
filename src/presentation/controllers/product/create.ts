@@ -14,8 +14,8 @@ export class CreateProductController implements Controller{
         
 
         const photoDir = rootDir+'//photos//products//'
-        if(!fs.existsSync(photoDir)) 
-        fs.mkdirSync(photoDir);
+
+        
         try {
             const image = data.file;
             const imageName = uuidv4()

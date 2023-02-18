@@ -13,8 +13,6 @@ export class CreateNewsController implements Controller{
     async handle(data: any): Promise<HttpResponse<any>> {
 
         const photoDir = rootDir+'//photos//news//'
-        if(!fs.existsSync(photoDir)) 
-        fs.mkdirSync(photoDir);
 
         try {
             const image = data.file
