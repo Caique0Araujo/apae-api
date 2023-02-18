@@ -11,7 +11,7 @@ export class CreateNewsController implements Controller{
 
     async handle(data: any): Promise<HttpResponse<any>> {
 
-        const photoDir = '.\\'+rootDir+'\\photos\\news\\'
+        const photoDir = rootDir+'\\photos\\news\\'
 
         try {
             const image = data.file
