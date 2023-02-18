@@ -4,7 +4,7 @@ const router = Router();
 
 
 router.get('/', (req, res) => {
-  res.json({message: "apae-api by Caique Araújo."})
+  res.json({message: "apae-api by Caique Araújo :D."})
 })
 
 router.get('/sambiquira', (req, res) => {
