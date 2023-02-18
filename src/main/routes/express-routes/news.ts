@@ -13,14 +13,22 @@ import { countNewsController } from "../../factories/controllers/news/count";
 const router = Router();
 
 router.get('/byId/:id', adaptRoute(getNewsByIdController())); 
-router.get('/recents',
+router.get('/recents/:start/:end',
 fileUpload({
   limits: {
       fileSize: 5000000, 
   },
   abortOnLimit: true,
 }),  adaptRoute(getRecentNewsController()));
-router.get('/count', adaptRoute(countNewsController()), authenticateRoute)
+router.get('/getAll',
+fileUpload({
+  limits: {
+      fileSize: 5000000, 
+  },
+  abortOnLimit: true,
+}), adaptRoute(getNewsController()));
+router.use(authenticateRoute)
+router.get('/count', adaptRoute(countNewsController()))
 router.post(
   '/create' ,
   fileUpload({
@@ -32,8 +40,7 @@ router.post(
   adaptRoute(createNewsController())
 );
 
-router.get('/getAll', adaptRoute(getNewsController()), authenticateRoute);
-router.delete('/delete/:id', adaptRoute(deleteNewsController()), authenticateRoute);
+router.delete('/delete/:id', adaptRoute(deleteNewsController()));
 
 
 
