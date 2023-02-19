@@ -1,9 +1,9 @@
 import { CreateProductUseCase } from "../../../domain/useCases/product/create";
-import { badRequest, created, defaultError, HttpResponse} from "../http";
+import { created, defaultError, HttpResponse} from "../http";
 import { Controller } from "../controller";
 import { v4 as uuidv4 } from 'uuid';
 const rootDir = require('path').resolve('./');
-import fs from 'fs'
+import getImageExtensionThroughType from "../../../helpers/image/imageExtension";
 
 export class CreateProductController implements Controller{
     constructor(
@@ -15,11 +15,12 @@ export class CreateProductController implements Controller{
 
         const photoDir = rootDir+'//photos//products//'
 
-        
+        const imageExtension = getImageExtensionThroughType(data.file.mimetype)
+
         try {
             const image = data.file;
             const imageName = uuidv4()
-            const imagePath = photoDir+imageName+'.png';
+            const imagePath = photoDir+imageName+imageExtension;
             image.mv(imagePath)
             data.content.image_path = imagePath
             data.content.price =  parseFloat(data.content.price)
